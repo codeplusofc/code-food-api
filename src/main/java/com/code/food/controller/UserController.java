@@ -3,10 +3,9 @@ package com.code.food.controller;
 import com.code.food.entity.UserEntity;
 import com.code.food.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 // A anotação @RestController indica que esta classe é responsável por tratar requisições HTTP
 @RestController
@@ -28,6 +27,13 @@ public class UserController {
     @PostMapping
     public UserEntity createUser(@RequestBody UserEntity userEntity) {
         return userService.createUser(userEntity);
+    }
+
+    // A anotação @GetMapping serve para especificar que vamos buscar e retornar algo
+    // O metodo findAllUsers() irá retornar uma lista(List) contendo todos os usuários que foram cadastrados
+    @GetMapping
+    public List<UserEntity> findAllUsers() {
+        return userService.findAllUsers();
     }
 
 }
