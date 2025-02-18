@@ -1,8 +1,25 @@
 package com.code.food.entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+// A anotação @Entity indica que esta classe é uma entidade JPA, ou seja,
+// ela será mapeada para uma tabela no banco de dados com o mesmo nome (ou um nome configurado).
+@Entity
 public class UserEntity {
 
+    // A anotação @Id marca o campo 'id' como a chave primária da tabela,
+    // identificando unicamente cada registro de usuário.
+    @Id
+
+    // A anotação @GeneratedValue define a estratégia para geração automática do valor do ID.
+    // Neste caso, a estratégia GenerationType.AUTO permite que o JPA escolha a melhor forma
+    // de gerar o ID, seja por incremento automático ou outro metodo dependendo do banco de dados.
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     private String name;
     private String email;
     private String password;
