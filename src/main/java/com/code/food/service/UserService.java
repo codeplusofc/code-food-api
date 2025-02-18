@@ -25,6 +25,13 @@ public class UserService {
     // O metodo retorna o objeto userEntity após ser salvo, com os dados atualizados,
     // incluindo o ID gerado automaticamente, se aplicável.
     public UserEntity createUser(UserEntity userEntity) {
+        if (userEntity.getName().isEmpty()) {
+            throw new RuntimeException("O nome não pode ser vazio");
+        } else if (userEntity.getEmail().isEmpty()) {
+            throw new RuntimeException("O e-mail não pode ser vazio");
+        } else if (userEntity.getPassword().isEmpty()) {
+            throw new RuntimeException("A senha não pode ser vazia");
+        }
         return userRepository.save(userEntity);
     }
 
