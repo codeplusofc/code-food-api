@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 // A anotação @Service é usada para marcar uma classe como um serviço no Spring.
 // Essa classe geralmente contém a lógica de negócio da aplicação.
@@ -31,5 +32,13 @@ public class UserService {
     // O metodo findAllUsers() irá retornar uma lista(List) contendo todos os usuários que foram cadastrados
     public List<UserEntity> findAllUsers() {
         return userRepository.findAll();
+    }
+
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
+    }
+
+    public Optional<UserEntity> getUserById(Long id) {
+        return userRepository.findById(id);
     }
 }
