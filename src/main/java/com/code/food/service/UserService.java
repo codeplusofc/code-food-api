@@ -2,10 +2,13 @@ package com.code.food.service;
 
 import com.code.food.entity.UserEntity;
 import com.code.food.repository.UserRepository;
+import com.code.food.validation.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import static com.code.food.validation.UserValidator.*;
 
 // A anotação @Service é usada para marcar uma classe como um serviço no Spring.
 // Essa classe geralmente contém a lógica de negócio da aplicação.
@@ -25,6 +28,7 @@ public class UserService {
     // O metodo retorna o objeto userEntity após ser salvo, com os dados atualizados,
     // incluindo o ID gerado automaticamente, se aplicável.
     public UserEntity createUser(UserEntity userEntity) {
+        validateFields(userEntity);
         return userRepository.save(userEntity);
     }
 
