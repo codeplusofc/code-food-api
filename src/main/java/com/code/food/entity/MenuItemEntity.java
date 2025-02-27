@@ -100,4 +100,8 @@ public class MenuItemEntity {
     public void setAvailability(String availability) {
         this.availability = availability;
     }
+
+    public MenuItemEntity save(MenuItemEntity menuItemEntity) {
+        return null;
+    }
 }
