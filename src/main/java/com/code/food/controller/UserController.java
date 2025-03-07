@@ -1,5 +1,7 @@
 package com.code.food.controller;
 
+import com.code.food.dto.InUser;
+import com.code.food.dto.OutUser;
 import com.code.food.entity.UserEntity;
 import com.code.food.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +28,8 @@ public class UserController {
     // dos dados (geralmente em formato JSON ou XML) e os mapeia para o parâmetro do metodo
     // de acordo com o tipo especificado.
     @PostMapping
-    public UserEntity createUser(@RequestBody UserEntity userEntity) {
-        return userService.createUser(userEntity);
+    public OutUser createUser(@RequestBody InUser inUser) {
+        return userService.createUser(inUser);
     }
 
     // A anotação @GetMapping serve para especificar que vamos buscar e retornar algo

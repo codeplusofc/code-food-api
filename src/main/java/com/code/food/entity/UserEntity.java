@@ -27,6 +27,14 @@ public class UserEntity {
     private String phone;
     private String referralSource;
 
+    public UserEntity(String name, String email, String password, String phone, String referralSource) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+        this.referralSource = referralSource;
+    }
+
     public String getName() {
         return name;
     }
