@@ -1,30 +1,28 @@
-package com.code.food.entity;
+package com.code.food.dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
-@Entity
-public class UserEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class OutUser {
     private Long id;
-
     private String name;
     private String email;
-    private String password;
     private String role;
     private String phone;
     private String referralSource;
 
-    public UserEntity(String name, String email, String password, String phone, String referralSource) {
+    public OutUser(Long id, String name, String email, String role, String phone, String referralSource) {
+        this.id = id;
         this.name = name;
         this.email = email;
-        this.password = password;
+        this.role = role;
         this.phone = phone;
         this.referralSource = referralSource;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -41,14 +39,6 @@ public class UserEntity {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getRole() {
@@ -73,13 +63,5 @@ public class UserEntity {
 
     public void setReferralSource(String referralSource) {
         this.referralSource = referralSource;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 }
