@@ -1,7 +1,6 @@
 package com.code.food.dto;
 
 public class InUser {
-
     private String name;
     private String email;
     private String password;

@@ -1,19 +1,28 @@
 package com.code.food.dto;
 
 public class OutUser {
-
     private Long id;
     private String name;
     private String email;
+    private String role;
     private String phone;
     private String referralSource;
 
-    public OutUser(Long id, String name, String email, String phone, String referralSource) {
+    public OutUser(Long id, String name, String email, String role, String phone, String referralSource) {
         this.id = id;
         this.name = name;
         this.email = email;
+        this.role = role;
         this.phone = phone;
         this.referralSource = referralSource;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -30,6 +39,14 @@ public class OutUser {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public String getPhone() {
