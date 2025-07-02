@@ -1,43 +1,22 @@
 package com.code.food.controller;
 
 import com.code.food.entity.MenuItemEntity;
-import com.code.food.service.MenuItemService;
+import com.code.food.repository.MenuItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
-
+// O @RestController serve para dizer que a classe é um controlador de requisição
+// O @RequestMapping serve para dizer qual caminho a requisição irá percorrer
 @RestController
 @RequestMapping("/item")
 public class MenuItemController {
 
     @Autowired
-    private MenuItemService menuItemService;
+    MenuItemRepository menuItemRepository;
 
     @PostMapping
-    public MenuItemEntity createItem(@RequestBody MenuItemEntity menuItemEntity) {
-        return menuItemService.createItem(menuItemEntity);
-    }
-
-    @GetMapping
-    public List<MenuItemEntity> findAllItems() {
-        return menuItemService.findAllItems();
-    }
-
-    @GetMapping("/{id}")
-    public Optional<MenuItemEntity> getItemById(@PathVariable Long id) {
-        return menuItemService.getItemById(id);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteItem(@PathVariable Long id) {
-        menuItemService.deleteItem(id);
-    }
-
-    @PutMapping("/{id}")
-    public MenuItemEntity updateItem(@RequestBody MenuItemEntity newItem, @PathVariable Long id) {
-        return menuItemService.updateItem(newItem, id);
+    public MenuItemEntity createItem(@RequestBody MenuItemEntity menuItemEntity ){
+        return menuItemRepository.save(menuItemEntity);
     }
 
 }
