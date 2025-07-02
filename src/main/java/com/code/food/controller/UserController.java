@@ -21,6 +21,9 @@ public class UserController {
     //O @PostMapping serve para indicar que a funcionalidade é uma função responsável por inserção
     @PostMapping
     public UserEntity createUser(@RequestBody UserEntity userEntity) {
+        if (userEntity.getEmail().isEmpty()||userEntity.getName().isEmpty()||userEntity.getPassword().isEmpty()||userEntity.getPhone().isEmpty()){
+            throw new RuntimeException("Por favor inserir campos validos");
+        }
         return userRepository.save(userEntity);
     }
 
