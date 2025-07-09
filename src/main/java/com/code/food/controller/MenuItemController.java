@@ -5,6 +5,8 @@ import com.code.food.repository.MenuItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 // O @RestController serve para dizer que a classe é um controlador de requisição
 // O @RequestMapping serve para dizer qual caminho a requisição irá percorrer
 @RestController
@@ -15,8 +17,13 @@ public class MenuItemController {
     MenuItemRepository menuItemRepository;
 
     @PostMapping
-    public MenuItemEntity createItem(@RequestBody MenuItemEntity menuItemEntity ){
+    public MenuItemEntity createItem(@RequestBody MenuItemEntity menuItemEntity) {
         return menuItemRepository.save(menuItemEntity);
+    }
+
+    @GetMapping
+    public List<MenuItemEntity> findAll() {
+        return menuItemRepository.findAll();
     }
 
 }
